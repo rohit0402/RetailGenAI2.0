@@ -1,0 +1,105 @@
+[
+  {
+    "id": "v2_q01",
+    "category": "exact_lookup",
+    "question": "What was the Revenue for record 96 (Black Friday - North)?",
+    "expected_answer": "108000",
+    "record_ids": ["96"]
+  },
+  {
+    "id": "v2_q02",
+    "category": "exact_lookup",
+    "question": "How much Revenue did record 47 generate?",
+    "expected_answer": "110000",
+    "record_ids": ["47"]
+  },
+
+  {
+    "id": "v2_q03",
+    "category": "metadata_filter",
+    "question": "Which region was record 74 from, and what was its Revenue?",
+    "expected_answer": "West, 90500",
+    "record_ids": ["74"]
+  },
+  {
+    "id": "v2_q04",
+    "category": "metadata_filter",
+    "question": "What was the Revenue of the Black Friday campaign in the North region for record 36?",
+    "expected_answer": "100500",
+    "record_ids": ["36"]
+  },
+{
+  "id": "v2_q05",
+  "category": "semantic",
+  "question": "Which campaign record generated the highest Revenue in the dataset?",
+  "expected_answer": "115000",
+  "record_ids": ["87"]
+},
+{
+  "id": "v2_q06",
+  "category": "semantic",
+  "question": "Which campaign had the strongest ROI among the records?",
+  "expected_answer": "6.4",
+  "record_ids": ["87"]
+},
+
+  {
+    "id": "v2_q07",
+    "category": "multi_condition",
+    "question": "Which record had Revenue of 100500 and belonged to the North region?",
+    "expected_answer": "36",
+    "record_ids": ["36"]
+  },
+  {
+    "id": "v2_q08",
+    "category": "multi_condition",
+    "question": "Which South region campaign generated 110000 Revenue?",
+    "expected_answer": "47",
+    "record_ids": ["47"]
+  },
+
+  {
+    "id": "v2_q09",
+    "category": "comparison",
+    "question": "Compare the Revenue of records 36 and 96.",
+    "expected_answer": "100500 and 108000",
+    "record_ids": ["36", "96"]
+  },
+  {
+    "id": "v2_q10",
+    "category": "comparison",
+    "question": "Which generated more Revenue: record 60 or record 100?",
+    "expected_answer": "record 100",
+    "record_ids": ["60", "100"]
+  },
+
+  {
+    "id": "v2_q11",
+    "category": "aggregation",
+    "question": "What is the average Revenue of records 36 and 96?",
+    "expected_answer": "104250",
+    "record_ids": ["36", "96"]
+  },
+  {
+    "id": "v2_q12",
+    "category": "aggregation",
+    "question": "What is the total Revenue of records 47 and 74?",
+    "expected_answer": "200500",
+    "record_ids": ["47", "74"]
+  },
+
+  {
+    "id": "v2_q13",
+    "category": "unanswerable",
+    "question": "What was the Revenue of the Mumbai campaign?",
+    "expected_answer": "Information not available in uploaded data.",
+    "record_ids": []
+  },
+  {
+    "id": "v2_q14",
+    "category": "unanswerable",
+    "question": "What was the Revenue of record 999?",
+    "expected_answer": "Information not available in uploaded data.",
+    "record_ids": []
+  }
+]

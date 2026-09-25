@@ -1,0 +1,552 @@
+import sys
+import re
+import time
+import json
+from pathlib import Path
+
+import pandas as pd
+from rank_bm25 import BM25Okapi
+from langchain_chroma import Chroma
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from utils.llm_config import llm, embedding_model
+from utils.prompts import RAG_TEMPLATE
+
+
+DATASET_PATH = PROJECT_ROOT / "data" / "evaluations" / "benchmark_retail.csv"
+QUESTIONS_PATH = PROJECT_ROOT / "data" / "evaluations" / "evaluation_questions.json"
+
+TOP_K = 5
+
+
+def create_documents(df):
+    documents = []
+
+    for _, row in df.iterrows():
+
+        text = "\n".join(
+            f"{column}: {row[column]}"
+            for column in df.columns
+        )
+
+        metadata = {
+            "record_id": str(row["record_id"]),
+            "campaign_name": str(row["campaign_name"]),
+            "region": str(row["region"]),
+            "start_date": str(row["start_date"])
+        }
+
+        documents.append(
+            {
+                "text": text,
+                "metadata": metadata
+            }
+        )
+
+    return documents
+
+
+def tokenize(text):
+    return re.findall(
+        r"\b\w+\b",
+        text.lower()
+    )
+
+
+def build_bm25(documents):
+
+    tokenized_documents = [
+        tokenize(doc["text"])
+        for doc in documents
+    ]
+
+    return BM25Okapi(tokenized_documents)
+
+
+def build_vector_store(documents):
+
+    texts = [
+        doc["text"]
+        for doc in documents
+    ]
+
+    metadatas = [
+        doc["metadata"]
+        for doc in documents
+    ]
+
+    return Chroma.from_texts(
+        texts=texts,
+        embedding=embedding_model,
+        metadatas=metadatas,
+        collection_name="experiment_04_hybrid"
+    )
+
+
+def hybrid_retrieve(
+    question,
+    documents,
+    vectordb,
+    bm25
+):
+
+    # -------------------------
+    # Dense retrieval
+    # -------------------------
+
+    dense_docs = vectordb.similarity_search(
+        question,
+        k=TOP_K
+    )
+
+    dense_ids = [
+        doc.metadata["record_id"]
+        for doc in dense_docs
+    ]
+
+    # -------------------------
+    # Sparse / BM25 retrieval
+    # -------------------------
+
+    query_tokens = tokenize(question)
+
+    scores = bm25.get_scores(query_tokens)
+
+    ranked_indices = sorted(
+        range(len(scores)),
+        key=lambda i: scores[i],
+        reverse=True
+    )
+
+    sparse_indices = ranked_indices[:TOP_K]
+
+    sparse_docs = [
+        documents[i]
+        for i in sparse_indices
+    ]
+
+    sparse_ids = [
+        doc["metadata"]["record_id"]
+        for doc in sparse_docs
+    ]
+
+    # -------------------------
+    # Reciprocal Rank Fusion
+    # -------------------------
+
+    rankings = {}
+
+    for rank, record_id in enumerate(
+        dense_ids,
+        start=1
+    ):
+        rankings[record_id] = rankings.get(
+            record_id,
+            0
+        ) + 1 / (60 + rank)
+
+    for rank, record_id in enumerate(
+        sparse_ids,
+        start=1
+    ):
+        rankings[record_id] = rankings.get(
+            record_id,
+            0
+        ) + 1 / (60 + rank)
+
+    ranked_ids = sorted(
+        rankings,
+        key=rankings.get,
+        reverse=True
+    )
+
+    ranked_ids = ranked_ids[:TOP_K]
+
+    documents_by_id = {
+        doc["metadata"]["record_id"]: doc
+        for doc in documents
+    }
+
+    final_docs = [
+        documents_by_id[record_id]
+        for record_id in ranked_ids
+    ]
+
+    return final_docs
+
+
+def generate_answer(context, question):
+
+    prompt = ChatPromptTemplate.from_template(
+        RAG_TEMPLATE
+    )
+
+    chain = (
+        prompt
+        | llm
+        | StrOutputParser()
+    )
+
+    return chain.invoke(
+        {
+            "context": context,
+            "question": question
+        }
+    )
+
+
+def normalize_answer(answer):
+
+    if isinstance(answer, list):
+        return "\n".join(
+            item if isinstance(item, str) else str(item)
+            for item in answer
+        )
+
+    return str(answer)
+
+
+def extract_record_id(question):
+
+    match = re.search(
+        r"\brecord\s*(?:id)?\s*[:#]?\s*(\d+)\b",
+        question,
+        re.IGNORECASE
+    )
+
+    if match:
+        return match.group(1)
+
+    return None
+
+
+def main():
+
+    print("=" * 70)
+    print("EXPERIMENT 4 — HYBRID RETRIEVAL")
+    print("=" * 70)
+
+    df = pd.read_csv(DATASET_PATH)
+
+    with open(
+        QUESTIONS_PATH,
+        "r",
+        encoding="utf-8"
+    ) as f:
+        questions = json.load(f)
+
+    documents = create_documents(df)
+
+    start_indexing = time.perf_counter()
+
+    bm25 = build_bm25(documents)
+
+    vectordb = build_vector_store(documents)
+
+    indexing_time = (
+        time.perf_counter()
+        - start_indexing
+    )
+
+    latencies = []
+    retrieval_hits = []
+    reciprocal_ranks = []
+    answer_correct = []
+
+    for i, item in enumerate(
+        questions,
+        start=1
+    ):
+
+        question = item["question"]
+
+        expected_answer = str(
+            item["expected_answer"]
+        )
+
+        record_id = extract_record_id(
+            question
+        )
+
+        print(f"\nQ{i}: {question}")
+
+        start = time.perf_counter()
+
+        docs = hybrid_retrieve(
+            question,
+            documents,
+            vectordb,
+            bm25
+        )
+
+        context = "\n\n".join(
+            doc["text"]
+            for doc in docs
+        )
+
+        answer = generate_answer(
+            context,
+            question
+        )
+
+        latency = (
+            time.perf_counter()
+            - start
+        )
+
+        latencies.append(latency)
+
+        retrieved_ids = [
+            str(doc["metadata"]["record_id"])
+            for doc in docs
+        ]
+
+        print(
+            "Retrieved IDs:",
+            retrieved_ids
+        )
+
+        # -------------------------
+        # Retrieval evaluation
+        # -------------------------
+
+        if (
+            record_id is not None
+            and record_id in retrieved_ids
+        ):
+
+            retrieval_hits.append(1)
+
+            rank = (
+                retrieved_ids.index(record_id)
+                + 1
+            )
+
+            reciprocal_ranks.append(
+                1 / rank
+            )
+
+            print(
+                "Correct rank:",
+                rank
+            )
+
+        else:
+
+            retrieval_hits.append(0)
+
+            reciprocal_ranks.append(0)
+
+            print(
+                "Correct record not retrieved"
+            )
+
+        # -------------------------
+        # Answer evaluation
+        # -------------------------
+
+        answer = normalize_answer(
+            answer
+        )
+
+        expected_match = re.search(
+            r"[\d,]+(?:\.\d+)?",
+            expected_answer
+        )
+
+        if expected_match:
+
+            expected_value = (
+                expected_match.group(0)
+            )
+
+            is_correct = (
+                expected_value in answer
+            )
+
+        else:
+
+            is_correct = False
+
+        answer_correct.append(
+            1 if is_correct else 0
+        )
+
+        print(
+            "Answer:",
+            answer
+        )
+
+        print(
+            "Expected:",
+            expected_answer
+        )
+
+        print(
+            "Correct:",
+            is_correct
+        )
+
+        print(
+            f"Latency: {latency:.4f}s"
+        )
+
+    # -------------------------
+    # Final metrics
+    # -------------------------
+
+    hit_rate = (
+        sum(retrieval_hits)
+        / len(retrieval_hits)
+    )
+
+    mrr = (
+        sum(reciprocal_ranks)
+        / len(reciprocal_ranks)
+    )
+
+    answer_accuracy = (
+        sum(answer_correct)
+        / len(answer_correct)
+    )
+
+    avg_latency = (
+        sum(latencies)
+        / len(latencies)
+    )
+
+    sorted_latencies = sorted(
+        latencies
+    )
+
+    p50 = sorted_latencies[
+        int(0.50 * len(sorted_latencies))
+    ]
+
+    p95 = sorted_latencies[
+        min(
+            int(0.95 * len(sorted_latencies)),
+            len(sorted_latencies) - 1
+        )
+    ]
+
+    p99 = sorted_latencies[
+        min(
+            int(0.99 * len(sorted_latencies)),
+            len(sorted_latencies) - 1
+        )
+    ]
+
+    results = {
+        "experiment":
+            "experiment_04_hybrid_retrieval",
+
+        "dataset_records":
+            len(df),
+
+        "evaluation_questions":
+            len(questions),
+
+        "top_k":
+            TOP_K,
+
+        "retrieval_method":
+            "Dense + BM25 + Reciprocal Rank Fusion",
+
+        "hit_rate_at_5":
+            hit_rate,
+
+        "recall_at_5":
+            hit_rate,
+
+        "mrr":
+            mrr,
+
+        "answer_accuracy":
+            answer_accuracy,
+
+        "indexing_time_seconds":
+            indexing_time,
+
+        "average_latency_seconds":
+            avg_latency,
+
+        "p50_latency_seconds":
+            p50,
+
+        "p95_latency_seconds":
+            p95,
+
+        "p99_latency_seconds":
+            p99
+    }
+
+    results_path = (
+        PROJECT_ROOT
+        / "benchmarks"
+        / "results"
+        / "experiment_04_results.json"
+    )
+
+    with open(
+        results_path,
+        "w",
+        encoding="utf-8"
+    ) as f:
+
+        json.dump(
+            results,
+            f,
+            indent=2
+        )
+
+    print("\n" + "=" * 70)
+    print("EXPERIMENT 4 RESULTS")
+    print("=" * 70)
+
+    print(
+        f"Hit Rate@5       : {hit_rate:.2%}"
+    )
+
+    print(
+        f"Recall@5         : {hit_rate:.2%}"
+    )
+
+    print(
+        f"MRR              : {mrr:.4f}"
+    )
+
+    print(
+        f"Answer Accuracy  : {answer_accuracy:.2%}"
+    )
+
+    print(
+        f"Indexing Time    : {indexing_time:.4f}s"
+    )
+
+    print(
+        f"Average Latency  : {avg_latency:.4f}s"
+    )
+
+    print(
+        f"P50 Latency      : {p50:.4f}s"
+    )
+
+    print(
+        f"P95 Latency      : {p95:.4f}s"
+    )
+
+    print(
+        f"P99 Latency      : {p99:.4f}s"
+    )
+
+    print("\nResults saved to:")
+    print(results_path)
+
+
+if __name__ == "__main__":
+    main()

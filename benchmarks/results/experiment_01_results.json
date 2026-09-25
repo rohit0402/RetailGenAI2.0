@@ -1,0 +1,178 @@
+{
+  "experiment": {
+    "name": "Experiment 01 - Row-Aware Chunking",
+    "dataset_records": 100,
+    "evaluation_questions": 12
+  },
+  "configuration": {
+    "chunking": "one_row_per_chunk",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "vector_database": "ChromaDB",
+    "retrieval_strategy": "semantic_search",
+    "top_k": 5,
+    "llm": "Gemini"
+  },
+  "metrics": {
+    "retrieval": {
+      "hit_rate_at_5": 1,
+      "recall_at_5": 1,
+      "mrr": 0.5791666666666666
+    },
+    "generation": {
+      "deterministic_answer_accuracy": 1
+    },
+    "performance": {
+      "indexing_time_seconds": 0.9727833999786526,
+      "average_generation_latency_seconds": 1.25232641667147,
+      "p50_latency_seconds": 1.211863100004848,
+      "p95_latency_seconds": 1.4135204850084846,
+      "p99_latency_seconds": 1.416582576992805
+    }
+  },
+  "individual_results": [
+    {
+      "id": "q01",
+      "question": "What was the Revenue for record 1 (Summer Sale - North)?",
+      "target_record_id": 1,
+      "expected_revenue": 45600.0,
+      "answer": "### Revenue Analysis: Record 1\n\n*   **Revenue:** $45,600\n\n**Business Insight:**\nRecord 1 represents the lowest performance tier among the provided data points for the \"Summer Sale - North\" campaign. With a marketing spend of $12,000, this record yielded the lowest revenue ($45,600), units sold (1,250), and ROI (3.8) in the dataset. This suggests that the campaign's efficiency scales positively with increased marketing investment, as higher-spend records (e.g., record 81) demonstrate superior revenue generation and ROI.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 5,
+      "reciprocal_rank": 0.2,
+      "answer_correct": 1,
+      "latency_seconds": 1.377543099981267
+    },
+    {
+      "id": "q02",
+      "question": "What was the Revenue for record 8 (Weekend Special - East)?",
+      "target_record_id": 8,
+      "expected_revenue": 24000.0,
+      "answer": "### Revenue Analysis: Record 8\n\n*   **Revenue:** $24,000\n\n**Business Insight:**\nRecord 8 represents the lowest revenue performance among the provided data points for the \"Weekend Special - East\" campaign. With a marketing spend of $8,000 and an ROI of 2.1, this record serves as the baseline for the campaign. Comparative analysis indicates that higher marketing investments (up to $10,000) correlate with increased customer traffic and higher total revenue, suggesting that the campaign maintains positive scalability within the observed spend range.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.211075700004585
+    },
+    {
+      "id": "q03",
+      "question": "What was the Revenue for record 16 (Black Friday - North)?",
+      "target_record_id": 16,
+      "expected_revenue": 98000.0,
+      "answer": "### Revenue Analysis: Record 16\n\n*   **Revenue:** $98,000\n\n**Business Insight:**\nRecord 16 represents the lowest revenue-generating entry among the provided dataset for the \"Black Friday - North\" campaign. With a marketing spend of $19,500 and a resulting ROI of 5.9, this record demonstrates a positive correlation between marketing investment and total revenue, as higher spend levels in other records (e.g., record 96) yielded proportionally higher revenue outcomes.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "answer_correct": 1,
+      "latency_seconds": 1.227203999995254
+    },
+    {
+      "id": "q04",
+      "question": "What was the Revenue for record 22 (Diwali Mega Sale - South)?",
+      "target_record_id": 22,
+      "expected_revenue": 94500.0,
+      "answer": "### Revenue Analysis: Record 22\n\n*   **Revenue:** 94,500\n\n**Business Insight:**\nRecord 22 represents a mid-tier performance within the Diwali Mega Sale - South campaign dataset. With a Return on Investment (ROI) of 5.65 and a marketing spend of 18,500, the campaign demonstrates a stable conversion efficiency, contributing to a total profit of 42,100 for this specific record.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "answer_correct": 1,
+      "latency_seconds": 1.212650500005111
+    },
+    {
+      "id": "q05",
+      "question": "What was the Revenue for record 36 (Black Friday - North)?",
+      "target_record_id": 36,
+      "expected_revenue": 100500.0,
+      "answer": "### Revenue Analysis: Record 36\n\n*   **Revenue:** $100,500\n\n**Business Insight:**\nRecord 36 represents a mid-tier performance within the \"Black Friday - North\" campaign dataset. With a marketing spend of $20,000 and an ROI of 5.95, this record demonstrates a stable conversion efficiency. When compared to the highest-performing record (ID 96), which generated $108,000 in revenue, Record 36 suggests that incremental increases in marketing spend within this specific campaign structure correlate positively with both total revenue and overall profitability.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "answer_correct": 1,
+      "latency_seconds": 1.1991009999765083
+    },
+    {
+      "id": "q06",
+      "question": "What was the Revenue for record 47 (Festive Flash Sale - South)?",
+      "target_record_id": 47,
+      "expected_revenue": 110000.0,
+      "answer": "### Revenue Analysis: Record 47\n\n*   **Revenue:** $110,000\n\n**Business Insight:**\nRecord 47 demonstrates a strong performance within the \"Festive Flash Sale - South\" campaign, achieving an ROI of 6.3. With a marketing spend of $21,000 and customer traffic of 36,600, this record maintains a balanced efficiency ratio compared to other entries in the dataset, suggesting that the current allocation of marketing spend is effectively driving both traffic and revenue conversion.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 4,
+      "reciprocal_rank": 0.25,
+      "answer_correct": 1,
+      "latency_seconds": 1.192065300012473
+    },
+    {
+      "id": "q07",
+      "question": "What was the Revenue for record 60 (New Year Eve - Central)?",
+      "target_record_id": 60,
+      "expected_revenue": 74000.0,
+      "answer": "### Revenue Analysis: Record 60\n\n*   **Revenue:** $74,000\n*   **Business Insight:** Record 60 demonstrates a strong performance within the \"New Year Eve - Central\" campaign, achieving an ROI of 4.8. With a marketing spend of $16,000, the campaign successfully converted traffic into a profit of $32,200, indicating efficient budget utilization relative to the campaign's overall performance metrics.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.1997750000446104
+    },
+    {
+      "id": "q08",
+      "question": "What was the Revenue for record 74 (Navratri Offer - West)?",
+      "target_record_id": 74,
+      "expected_revenue": 90500.0,
+      "answer": "### Revenue Analysis: Record 74\n\n*   **Revenue:** 90,500\n\n**Business Insight:**\nRecord 74 demonstrates a strong performance within the \"Navratri Offer - West\" campaign series. With a Return on Investment (ROI) of 5.35, this record reflects a positive correlation between increased marketing spend (18,500) and higher revenue generation, suggesting that the campaign effectively scaled to capture increased customer traffic (31,400) during the promotional period.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "answer_correct": 1,
+      "latency_seconds": 1.1873756000422873
+    },
+    {
+      "id": "q09",
+      "question": "What was the Revenue for record 85 (New Year Campaign - Central)?",
+      "target_record_id": 85,
+      "expected_revenue": 85000.0,
+      "answer": "### Revenue Analysis: Record 85\n\n*   **Revenue:** $85,000\n\n**Business Insight:**\nRecord 85 represents the highest-performing entry within the provided dataset for the \"New Year Campaign - Central.\" It achieved the maximum revenue ($85,000), units sold (1,930), and ROI (5.1) among the listed records. This suggests that the marketing spend of $18,000 was effectively optimized to drive both customer traffic and conversion, yielding the highest profit margin of $37,400.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.1699233999825083
+    },
+    {
+      "id": "q10",
+      "question": "What was the Revenue for record 92 (Independence Sale - South)?",
+      "target_record_id": 92,
+      "expected_revenue": 71000.0,
+      "answer": "### Revenue Analysis: Record 92\n\n*   **Revenue:** $71,000\n\n**Business Insight:**\nRecord 92 represents the highest-performing entry within the \"Independence Sale - South\" campaign dataset. It achieved the maximum revenue of $71,000, supported by the highest marketing spend ($16,000), the highest customer traffic (25,700), and the strongest ROI (4.6) among the provided records. This indicates a positive correlation between increased marketing investment and overall campaign profitability for this specific regional event.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "answer_correct": 1,
+      "latency_seconds": 1.2234664999996312
+    },
+    {
+      "id": "q11",
+      "question": "What was the Revenue for record 96 (Black Friday - North)?",
+      "target_record_id": 96,
+      "expected_revenue": 108000.0,
+      "answer": "### Revenue Analysis: Record 96\n\n*   **Revenue:** $108,000\n\n**Business Insight:**\nRecord 96 represents the highest-performing entry among the provided data set for the \"Black Friday - North\" campaign. With a marketing spend of $21,500, it achieved the highest revenue ($108,000), the highest profit ($49,900), and the strongest ROI (6.1). This indicates that the higher investment level successfully scaled customer traffic (36,200) and unit sales (2,340) while maintaining optimal efficiency.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.4103888000245206
+    },
+    {
+      "id": "q12",
+      "question": "What was the Revenue for record 100 (New Year Eve - Central)?",
+      "target_record_id": 100,
+      "expected_revenue": 79000.0,
+      "answer": "### Revenue Analysis: Record 100\n\n*   **Revenue:** $79,000\n\n**Business Insights:**\nRecord 100 represents the highest-performing entry among the provided data set for the \"New Year Eve - Central\" campaign. It achieved the highest revenue ($79,000), the highest customer traffic (28,200), and the strongest ROI (4.9), indicating that the $17,000 marketing spend was deployed with optimal efficiency compared to other records in this cohort.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "answer_correct": 1,
+      "latency_seconds": 1.4173480999888852
+    }
+  ]
+}

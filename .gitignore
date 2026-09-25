@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env.*
+!.env.example
+
+vector_store/chroma_db/
+data/uploads/
+benchmarks/*.json   

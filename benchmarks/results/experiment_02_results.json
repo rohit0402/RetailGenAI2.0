@@ -1,0 +1,220 @@
+{
+  "experiment": {
+    "name": "Experiment 02 - Metadata-Aware Retrieval",
+    "dataset_records": 100,
+    "evaluation_questions": 12
+  },
+  "configuration": {
+    "chunking": "one_row_per_chunk",
+    "metadata": [
+      "record_id",
+      "campaign_name",
+      "region",
+      "start_date"
+    ],
+    "embedding_model": "all-MiniLM-L6-v2",
+    "vector_database": "ChromaDB",
+    "retrieval_strategy": "metadata_filtered_semantic_search",
+    "top_k": 5,
+    "llm": "Gemini"
+  },
+  "metrics": {
+    "retrieval": {
+      "hit_rate_at_5": 1,
+      "recall_at_5": 1,
+      "mrr": 1.0
+    },
+    "generation": {
+      "deterministic_answer_accuracy": 1
+    },
+    "performance": {
+      "indexing_time_seconds": 2.093156800001452,
+      "average_generation_latency_seconds": 1.6428186000005855,
+      "p50_latency_seconds": 1.5653624500009755,
+      "p95_latency_seconds": 2.0715572400007654,
+      "p99_latency_seconds": 2.2472620880013716
+    }
+  },
+  "individual_results": [
+    {
+      "id": "q01",
+      "question": "What was the Revenue for record 1 (Summer Sale - North)?",
+      "target_record_id": 1,
+      "expected_revenue": 45600.0,
+      "answer": "{'type': 'text', 'text': '### Revenue Analysis: Summer Sale - North\\n\\n*   **Revenue:** $45,600\\n\\n**Business Insight:**\\nWith a marketing spend of $12,000 and a reported ROI of 3.8, the campaign demonstrates strong efficiency in converting marketing investment into top-line revenue. The current revenue-to-traffic ratio suggests an average transaction value of approximately $2.46 per visitor, which can be used as a benchmark for future regional performance optimization.', 'extras': {'signature': 'EnEKbwERTTIP3ZDumB2Pqf3suzsMy0ZcWoakccKX5Akyhokl+HQhVNwx4Okhm6CL0Cf25/H1UJblKKQ3ZTieiyBurCRgqvxWWClb7ZhVXG7lyzzOr2WmZnuMEQCF+p5PUwvur6jJb/ap4Gv6bN8oSBpxPg=='}}",
+      "metadata_filter": {
+        "record_id": 1
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.5481620999998995
+    },
+    {
+      "id": "q02",
+      "question": "What was the Revenue for record 8 (Weekend Special - East)?",
+      "target_record_id": 8,
+      "expected_revenue": 24000.0,
+      "answer": "{'type': 'text', 'text': '### Revenue Analysis: Record 8\\n\\n*   **Revenue:** $24,000\\n\\n**Business Insights:**\\nThe \"Weekend Special - East\" campaign achieved a Return on Investment (ROI) of 2.1, indicating that for every dollar spent on marketing, the campaign generated $2.10 in return. With a marketing spend of $8,000 and total revenue of $24,000, the campaign maintained a healthy profit margin of approximately 29.1% ($7,000 profit on $24,000 revenue).', 'extras': {'signature': 'EnEKbwERTTIPWHrNidI/3z3bVKJcEx05BPE0jwmzeaaOOTQUUFESBQugJLYU5DPcym89XfxEv/5qu3b/31iFetFOEZ2kDUQYXVpiHkXjUBO0i83IVy6+hBte0THPOlvSGkMNqlxWXHf07VnFGx8eDZVFAw=='}}",
+      "metadata_filter": {
+        "record_id": 8
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.891859100000147
+    },
+    {
+      "id": "q03",
+      "question": "What was the Revenue for record 16 (Black Friday - North)?",
+      "target_record_id": 16,
+      "expected_revenue": 98000.0,
+      "answer": "{'type': 'text', 'text': '### Revenue Analysis: Record 16\\n\\n*   **Revenue:** $98,000\\n\\n**Business Insight:**\\nWith a marketing spend of $19,500 and a total cost of $52,500, the campaign achieved a strong ROI of 5.9. The conversion rate from customer traffic (33,000) to units sold (2,200) indicates a conversion efficiency of approximately 6.67%, suggesting that the \"Black Friday - North\" campaign was effective in driving both volume and profitability within the region.', 'extras': {'signature': 'EnEKbwERTTIPg41cmGkCYwYOpDUiQR+NG2bW7s10vKFn9OBweflacHi3PDLDqeRSy2MdgVkn85JUGAwTvLbLJfB8oyDCkGD1Au0OU+wmlLTnsilntDIAocjSKIbT7MCxWppGnjHEL6xGChp0VJ7S9R2kcA=='}}",
+      "metadata_filter": {
+        "record_id": 16
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.4857674000013503
+    },
+    {
+      "id": "q04",
+      "question": "What was the Revenue for record 22 (Diwali Mega Sale - South)?",
+      "target_record_id": 22,
+      "expected_revenue": 94500.0,
+      "answer": "{'type': 'text', 'text': '### Campaign Performance Analysis: Record 22\\n\\n*   **Revenue:** $94,500\\n\\n**Business Insights:**\\n*   **Efficiency:** The campaign achieved a strong ROI of 5.65, indicating that for every dollar spent on marketing, the campaign generated $5.65 in return.\\n*   **Profitability:** With a profit of $42,100 against a revenue of $94,500, the campaign maintained a healthy profit margin of approximately 44.5%.\\n*   **Conversion:** The campaign successfully converted a portion of the 32,800 customer traffic into 2,145 units sold, suggesting a conversion rate of approximately 6.54%.', 'extras': {'signature': 'EnEKbwERTTIPa//i65+xVoWWXEaBBZQclJ6up8GMRg5/mhUAbFvvqb5nGW9HL/2Vpu0cUPRXvya4/0ng+y2NE+YnwtSihNoTyQLR3Ai4juXNioK04jo/oY8a0IDmx4CbVyGSEQmDCSJLLZzag+sbRdXzqg=='}}",
+      "metadata_filter": {
+        "record_id": 22
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.6932927999987442
+    },
+    {
+      "id": "q05",
+      "question": "What was the Revenue for record 36 (Black Friday - North)?",
+      "target_record_id": 36,
+      "expected_revenue": 100500.0,
+      "answer": "{'type': 'text', 'text': '### Revenue Analysis: Record 36\\n\\n*   **Revenue:** $100,500\\n\\n**Business Insights:**\\nThe \"Black Friday - North\" campaign achieved a strong revenue performance with an ROI of 5.95. With a marketing spend of $20,000 against a total revenue of $100,500, the campaign demonstrates high efficiency in converting customer traffic (33,800) into sales, resulting in a profit of $46,600.', 'extras': {'signature': 'EnEKbwERTTIPfe+9MEweyNwRnA/45PtqBmkYRsrh05nULNwDQZ0oq5ng0axRCV/+S7QbPMGJlcByy2JabuiuEeXxKYF5IPbAr3BS4ORCHx0liwUfW5jqUG0QhSXeu23e6L6HjlBOcy/QlG4qbQREAQRndA=='}}",
+      "metadata_filter": {
+        "record_id": 36
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.491531899999245
+    },
+    {
+      "id": "q06",
+      "question": "What was the Revenue for record 47 (Festive Flash Sale - South)?",
+      "target_record_id": 47,
+      "expected_revenue": 110000.0,
+      "answer": "{'type': 'text', 'text': '### Campaign Performance Analysis: Record 47\\n\\n**Revenue Details**\\n*   **Total Revenue:** $110,000\\n\\n**Business Insights**\\n*   **Profitability:** The campaign generated a profit of $51,200, representing a profit margin of approximately 46.5%.\\n*   **Efficiency:** With an ROI of 6.3, the campaign demonstrated strong capital efficiency, yielding $6.30 in return for every dollar spent on marketing.\\n*   **Conversion:** The campaign successfully converted approximately 6.5% of the total customer traffic (2,380 units sold against 36,600 visitors).', 'extras': {'signature': 'EnEKbwERTTIP+MxH+UZ4eLqvWd4j3a4+MmyqU63dztxDT+Krqkx1jSztU2S3w2ricT5Lw3jchaczKwdSPoOU4shK+vSLE56CMsLG5djSbSOvVWcyL0xVUxuRM7c/WdiNGxZAK5zpXgXBV+7/pdcB5HX+bg=='}}",
+      "metadata_filter": {
+        "record_id": 47
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.5019802000024356
+    },
+    {
+      "id": "q07",
+      "question": "What was the Revenue for record 60 (New Year Eve - Central)?",
+      "target_record_id": 60,
+      "expected_revenue": 74000.0,
+      "answer": "{'type': 'text', 'text': '### Campaign Performance Analysis: Record 60\\n\\n**Revenue:** $74,000\\n\\n**Business Insights:**\\n*   **Efficiency:** The campaign achieved a strong ROI of 4.8, indicating effective capital allocation relative to the $16,000 marketing spend.\\n*   **Conversion:** With 26,600 in customer traffic and 1,830 units sold, the campaign maintained a conversion rate of approximately 6.88%, suggesting successful engagement during the New Year period.\\n*   **Profitability:** The campaign generated a profit of $32,200, reflecting a healthy margin after accounting for the $41,800 in total costs.', 'extras': {'signature': 'EnEKbwERTTIPl3MhxaB2KsYQNA7kileVlPFp0kM0rK6PoCUwm3aEsXL1GnKBBkajNiNcq8hzHyobQvInvWYj+HlZ7GSlFPDMbbYTGhmG5IC7re4vL5wvEmLd5s/d00EI5x1uCryg13fIWSXBfM6SKgOjWw=='}}",
+      "metadata_filter": {
+        "record_id": 60
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 2.2911883000015223
+    },
+    {
+      "id": "q08",
+      "question": "What was the Revenue for record 74 (Navratri Offer - West)?",
+      "target_record_id": 74,
+      "expected_revenue": 90500.0,
+      "answer": "{'type': 'text', 'text': '### Campaign Performance Analysis: Record 74\\n\\n**Revenue Details**\\n*   **Campaign Name:** Navratri Offer - West\\n*   **Revenue:** 90,500\\n\\n**Business Insights**\\n*   **Efficiency:** The campaign achieved a strong ROI of 5.35, indicating effective capital allocation relative to the marketing spend of 18,500.\\n*   **Profitability:** With a total profit of 39,800, the campaign demonstrates a healthy margin, converting approximately 44% of generated revenue into profit.\\n*   **Conversion:** The campaign successfully engaged a customer traffic base of 31,400 to achieve 2,085 units sold, reflecting a conversion rate of approximately 6.64%.', 'extras': {'signature': 'EnEKbwERTTIPyFIGEisQjAqmFqC/S9F/GT8bueMhC9oHs4bWzxO/sbI/jj8PrSBDPcLnWLpMJhQbScmKtcZ0bD3MWVhUrssUmxATJ/goLP5XZTnOqTvBpKOdOwN+y75t/Vb/YGr0jcx7yzvhc5xn0Kj5QQ=='}}",
+      "metadata_filter": {
+        "record_id": 74
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.5825628000020515
+    },
+    {
+      "id": "q09",
+      "question": "What was the Revenue for record 85 (New Year Campaign - Central)?",
+      "target_record_id": 85,
+      "expected_revenue": 85000.0,
+      "answer": "{'type': 'text', 'text': '### Campaign Performance Analysis: Record 85\\n\\n**Revenue Details**\\n*   **Total Revenue:** $85,000\\n\\n**Business Insights**\\n*   **Efficiency:** The campaign achieved a strong ROI of 5.1, indicating that for every dollar spent on marketing, the campaign generated $5.10 in return.\\n*   **Profitability:** With a profit of $37,400 against a revenue of $85,000, the campaign maintained a healthy profit margin of approximately 44%.\\n*   **Conversion:** The campaign successfully converted a portion of the 30,200 customer traffic into 1,930 units sold, suggesting a conversion rate of approximately 6.39%.', 'extras': {'signature': 'EnEKbwERTTIPuyS8TN/6C9ejrhyoaOpEiNr8KfPrPwMqcorzdmbSQF9RhT6tD3mOmDvW+ZZMafuSZBeqIQoBA+NxnHOfxzZBwicUfpGZy5ph600aijmap3/jqaCnED6sIJaPSW9Olh+0+urfYPUExZN+Tg=='}}",
+      "metadata_filter": {
+        "record_id": 85
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.6963720999992802
+    },
+    {
+      "id": "q10",
+      "question": "What was the Revenue for record 92 (Independence Sale - South)?",
+      "target_record_id": 92,
+      "expected_revenue": 71000.0,
+      "answer": "{'type': 'text', 'text': '### Campaign Performance Analysis: Record 92\\n\\n**Revenue:** $71,000\\n\\n**Business Insights:**\\n*   **Efficiency:** The campaign achieved a strong ROI of 4.6, indicating that for every dollar spent on marketing, the campaign generated $4.60 in return.\\n*   **Conversion:** With 25,700 customer traffic visits and 1,700 units sold, the campaign reflects a conversion rate of approximately 6.6%.\\n*   **Profitability:** The campaign yielded a profit of $30,400, demonstrating healthy margins relative to the $16,000 marketing investment.', 'extras': {'signature': 'EnEKbwERTTIPQG8sWSHQVQrYTnarWJAm7LU9hwZUqoCf+68ILTlQAwEwu8gpjKPA93PEB/lYd98aVLX1bhWlLUpoVEhv8pNxShyyyukZGyMIE/eNMFbEmcQqljcj2xG0t3BuZ5yxWxd9+Is4Za54A/M6gA=='}}",
+      "metadata_filter": {
+        "record_id": 92
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.493792500001291
+    },
+    {
+      "id": "q11",
+      "question": "What was the Revenue for record 96 (Black Friday - North)?",
+      "target_record_id": 96,
+      "expected_revenue": 108000.0,
+      "answer": "{'type': 'text', 'text': '### Revenue Analysis: Record 96\\n\\n*   **Revenue:** $108,000\\n\\n**Business Insights:**\\nThe campaign achieved a strong ROI of 6.1, indicating efficient capital allocation. With a profit margin of approximately 46.2% ($49,900 profit on $108,000 revenue), the \"Black Friday - North\" campaign demonstrated high profitability relative to the $21,500 marketing spend.', 'extras': {'signature': 'EnEKbwERTTIPSuwIKJbUu7DjS86wwywLfzJt/OG4Ds0+3oBLbBgr5eOtupj+ZdfHI5dJm4jS4epkwaMFPRBpHuoCquG4Jcj72mJEG1O6OHbrA8UddVfezaqBFv563vGKFAmPYb0d3SNdFDelWVcGgDNp8g=='}}",
+      "metadata_filter": {
+        "record_id": 96
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.4059397999990324
+    },
+    {
+      "id": "q12",
+      "question": "What was the Revenue for record 100 (New Year Eve - Central)?",
+      "target_record_id": 100,
+      "expected_revenue": 79000.0,
+      "answer": "{'type': 'text', 'text': '### Revenue Analysis: Record 100\\n\\n*   **Revenue:** $79,000\\n\\n**Business Insights:**\\n*   **Performance Efficiency:** With a marketing spend of $17,000 and a generated revenue of $79,000, the campaign achieved a strong ROI of 4.9.\\n*   **Conversion Efficiency:** The campaign successfully converted a portion of the 28,200 customer traffic into 1,900 units sold, indicating a healthy engagement level for the New Year Eve period in the Central region.', 'extras': {'signature': 'EnEKbwERTTIPcUxRgW1SR1zVEvIJifeIi08GwJyII2TcuFPjZFDMdvZJDOMh8aA1ycgabByzKoxCPsOMBLSmXeUo1L+v8FTDTA6m42WHdTrcFBZx3EZgBcJAdifY7JyI5yNyH+iIa3SG82ImRUfsib59zA=='}}",
+      "metadata_filter": {
+        "record_id": 100
+      },
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "latency_seconds": 1.6313742000020284
+    }
+  ]
+}

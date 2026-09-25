@@ -1,0 +1,96 @@
+{
+  "experiment": "Experiment 7 - Real RAG + LLM Cache",
+  "total_requests": 8,
+  "gemini_calls": 1,
+  "cache_hits": 1,
+  "cache_hit_rate": 0.5,
+  "gemini_calls_avoided": 1,
+  "average_latency": 0.2603405375084549,
+  "p50_latency": 0.0005948500038357452,
+  "p95_latency": 2.0748698000097647,
+  "p99_latency": 2.0748698000097647,
+  "results": [
+    {
+      "request": 1,
+      "question": "What was the Revenue of the Black Friday campaign in the North region for record 36?",
+      "route": "deterministic",
+      "retrieved_ids": [
+        "36"
+      ],
+      "latency": 0.0038819999899715185,
+      "answer": "Record 36 (Black Friday - North) belongs to the North region and generated Revenue of 100500."
+    },
+    {
+      "request": 2,
+      "question": "What was the Revenue of the Black Friday campaign in the North region for record 36?",
+      "route": "deterministic",
+      "retrieved_ids": [
+        "36"
+      ],
+      "latency": 0.0018403000140096992,
+      "answer": "Record 36 (Black Friday - North) belongs to the North region and generated Revenue of 100500."
+    },
+    {
+      "request": 3,
+      "question": "Which campaign record generated the highest Revenue in the dataset?",
+      "route": "deterministic",
+      "retrieved_ids": [
+        "87"
+      ],
+      "latency": 0.0007323999889194965,
+      "answer": "Record 87 (Festive Flash Sale - South) generated the highest Revenue of 115000."
+    },
+    {
+      "request": 4,
+      "question": "Which campaign record generated the highest Revenue in the dataset?",
+      "route": "deterministic",
+      "retrieved_ids": [
+        "87"
+      ],
+      "latency": 0.0004124999977648258,
+      "answer": "Record 87 (Festive Flash Sale - South) generated the highest Revenue of 115000."
+    },
+    {
+      "request": 5,
+      "question": "Which campaign had the strongest ROI among the records?",
+      "route": "deterministic",
+      "retrieved_ids": [
+        "87"
+      ],
+      "latency": 0.0004233000217936933,
+      "answer": "Record 87 (Festive Flash Sale - South) had the strongest ROI of 6.4."
+    },
+    {
+      "request": 6,
+      "question": "Which campaign had the strongest ROI among the records?",
+      "route": "deterministic",
+      "retrieved_ids": [
+        "87"
+      ],
+      "latency": 0.0004573000187519938,
+      "answer": "Record 87 (Festive Flash Sale - South) had the strongest ROI of 6.4."
+    },
+    {
+      "request": 7,
+      "question": "What was the Revenue of the Mumbai campaign?",
+      "route": "gemini",
+      "retrieved_ids": [
+        "62",
+        "2",
+        "22",
+        "42",
+        "82"
+      ],
+      "latency": 2.0748698000097647,
+      "answer": "### Campaign Analysis Report\n\n**Revenue for Mumbai Campaign:**\nInformation not available in uploaded data.\n\n**Business Insight:**\nThe provided dataset exclusively contains performance metrics for the \"Diwali Mega Sale - South\" campaign. There is no record of marketing activities or revenue data pertaining to the Mumbai region. To conduct a comparative analysis, please provide the relevant campaign records for the Mumbai market."
+    },
+    {
+      "request": 8,
+      "question": "What was the Revenue of the Mumbai campaign?",
+      "route": "cache",
+      "retrieved_ids": [],
+      "latency": 0.00010670002666302025,
+      "answer": "### Campaign Analysis Report\n\n**Revenue for Mumbai Campaign:**\nInformation not available in uploaded data.\n\n**Business Insight:**\nThe provided dataset exclusively contains performance metrics for the \"Diwali Mega Sale - South\" campaign. There is no record of marketing activities or revenue data pertaining to the Mumbai region. To conduct a comparative analysis, please provide the relevant campaign records for the Mumbai market."
+    }
+  ]
+}

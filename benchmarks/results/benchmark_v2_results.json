@@ -1,0 +1,74 @@
+{
+  "experiment": "benchmark_v2_current_best_architecture",
+  "dataset_records": 100,
+  "evaluation_questions": 14,
+  "top_k": 5,
+  "architecture": "row-aware + query transformation + metadata filtering + dense retrieval + Gemini",
+  "target_recall_at_5": 0.9285714285714286,
+  "all_targets_at_5": 0.9285714285714286,
+  "mrr": 0.9285714285714286,
+  "answer_accuracy": 1.0,
+  "indexing_time_seconds": 1.238827900000615,
+  "average_latency_seconds": 0.5503117499999591,
+  "p50_latency_seconds": 0.002127299999301613,
+  "p95_latency_seconds": 7.661052099999324,
+  "p99_latency_seconds": 7.661052099999324,
+  "category_results": {
+    "exact_lookup": {
+      "questions": 2,
+      "target_recall_at_5": 1.0,
+      "all_targets_at_5": 1.0,
+      "mrr": 1.0,
+      "answer_accuracy": 1.0,
+      "average_latency_seconds": 0.00653874999989057
+    },
+    "metadata_filter": {
+      "questions": 2,
+      "target_recall_at_5": 1.0,
+      "all_targets_at_5": 1.0,
+      "mrr": 1.0,
+      "answer_accuracy": 1.0,
+      "average_latency_seconds": 0.0020309999999881256
+    },
+    "semantic": {
+      "questions": 2,
+      "target_recall_at_5": 1.0,
+      "all_targets_at_5": 1.0,
+      "mrr": 1.0,
+      "answer_accuracy": 1.0,
+      "average_latency_seconds": 0.0005439999999907741
+    },
+    "multi_condition": {
+      "questions": 2,
+      "target_recall_at_5": 1.0,
+      "all_targets_at_5": 1.0,
+      "mrr": 1.0,
+      "answer_accuracy": 1.0,
+      "average_latency_seconds": 0.007087599999977101
+    },
+    "comparison": {
+      "questions": 2,
+      "target_recall_at_5": 1.0,
+      "all_targets_at_5": 1.0,
+      "mrr": 1.0,
+      "answer_accuracy": 1.0,
+      "average_latency_seconds": 0.002316650000466325
+    },
+    "aggregation": {
+      "questions": 2,
+      "target_recall_at_5": 1.0,
+      "all_targets_at_5": 1.0,
+      "mrr": 1.0,
+      "answer_accuracy": 1.0,
+      "average_latency_seconds": 0.0020801000000574277
+    },
+    "unanswerable": {
+      "questions": 2,
+      "target_recall_at_5": 0.5,
+      "all_targets_at_5": 0.5,
+      "mrr": 0.5,
+      "answer_accuracy": 1.0,
+      "average_latency_seconds": 3.831584149999344
+    }
+  }
+}

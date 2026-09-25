@@ -1,0 +1,275 @@
+{
+  "benchmark": {
+    "name": "RetailGenAI 2.0 Baseline",
+    "dataset_records": 100,
+    "evaluation_questions": 12
+  },
+  "configuration": {
+    "chunk_size": 1000,
+    "chunk_overlap": 200,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "vector_database": "ChromaDB",
+    "retrieval_strategy": "semantic_search",
+    "top_k": 5,
+    "llm": "Gemini"
+  },
+  "metrics": {
+    "retrieval": {
+      "hit_rate_at_5": 0.8333333333333334,
+      "recall_at_5": 0.8333333333333334,
+      "mrr": 0.5972222222222222
+    },
+    "generation": {
+      "deterministic_answer_accuracy": 0.8333333333333334
+    },
+    "performance": {
+      "indexing_time_seconds": 0.9764390999916941,
+      "average_generation_latency_seconds": 2.7858271333340476,
+      "p50_latency_seconds": 2.487494950008113,
+      "p95_latency_seconds": 4.5101781400066105,
+      "p99_latency_seconds": 4.658518508005073
+    }
+  },
+  "individual_results": [
+    {
+      "id": "q01",
+      "question": "What was the Revenue for record 1 (Summer Sale - North)?",
+      "target_record_id": 1,
+      "expected_revenue": 45600.0,
+      "answer": "### Revenue Analysis: Record 1\n\n*   **Campaign Name:** Summer Sale - North\n*   **Revenue:** 45,600\n\n**Business Insight:**\nThe \"Summer Sale - North\" (Record 1) generated a revenue of 45,600 with a marketing spend of 12,000, resulting in an ROI of 3.80. When compared to other iterations of the \"Summer Sale - North\" in the dataset (Records 21, 41, and 81), this campaign represents the lowest revenue performance, suggesting potential opportunities for optimization in future North region summer promotional strategies.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.029628200049046427,
+      "latency_seconds": 3.4133180999779142,
+      "retrieved_chunk_ids": [
+        0,
+        13,
+        3,
+        6,
+        2
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "What was the Revenue for record 8 (Weekend Special - East)?",
+      "target_record_id": 8,
+      "expected_revenue": 24000.0,
+      "answer": "### Revenue Analysis: Weekend Special - East\n\n**Data Point:**\n*   **Record ID:** 8\n*   **Revenue:** Information not available in uploaded data.\n\n**Business Insight:**\nThe provided dataset contains records for the \"Weekend Special - East\" campaign under record IDs 48 and 88, but does not include a record ID 8. To ensure accurate performance tracking, please verify the record ID or refer to the available entries for this campaign (IDs 48 and 88) to analyze revenue trends and ROI consistency for the East region.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 0,
+      "retrieval_time_seconds": 0.03141019999748096,
+      "latency_seconds": 4.358466400008183,
+      "retrieved_chunk_ids": [
+        0,
+        16,
+        7,
+        6,
+        14
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "What was the Revenue for record 16 (Black Friday - North)?",
+      "target_record_id": 16,
+      "expected_revenue": 98000.0,
+      "answer": "### Revenue Analysis: Record 16\n\n*   **Campaign Name:** Black Friday - North\n*   **Revenue:** 98,000\n\n**Business Insight:**\nRecord 16 represents a strong performance for the Black Friday campaign in the North region. With a marketing spend of 19,500 and a resulting revenue of 98,000, the campaign achieved an ROI of 5.90. This indicates high efficiency in converting marketing investment into top-line growth during the peak holiday shopping period.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.010324599978048354,
+      "latency_seconds": 1.8202444999478757,
+      "retrieved_chunk_ids": [
+        16,
+        6,
+        2,
+        0,
+        12
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "What was the Revenue for record 22 (Diwali Mega Sale - South)?",
+      "target_record_id": 22,
+      "expected_revenue": 94500.0,
+      "answer": "### Revenue Analysis: Record 22\n\n*   **Campaign Name:** Diwali Mega Sale - South\n*   **Revenue:** 94,500\n\n**Business Insight:**\nThe Diwali Mega Sale in the South region (Record 22) generated a revenue of 94,500. When compared to other entries for the same campaign (e.g., Record 2, 42, and 82), this performance sits within the mid-to-high range for this specific event, indicating consistent regional demand and effective market penetration during the Diwali festive period.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.02983179996954277,
+      "latency_seconds": 1.9032278999802656,
+      "retrieved_chunk_ids": [
+        7,
+        3,
+        13,
+        6,
+        0
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "What was the Revenue for record 36 (Black Friday - North)?",
+      "target_record_id": 36,
+      "expected_revenue": 100500.0,
+      "answer": "### Revenue Analysis: Record 36\n\n*   **Campaign Name:** Black Friday - North\n*   **Revenue:** 100,500\n\n**Business Insight:**\nThe Black Friday campaign in the North region (Record 36) generated a revenue of 100,500 with a marketing spend of 20,000, resulting in an ROI of 5.95. This performance indicates a strong conversion efficiency, as the campaign successfully drove 33,800 in customer traffic, positioning it as a high-impact event within the regional marketing calendar.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.030265400011558086,
+      "latency_seconds": 3.293325700040441,
+      "retrieved_chunk_ids": [
+        16,
+        6,
+        2,
+        12,
+        0
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "What was the Revenue for record 47 (Festive Flash Sale - South)?",
+      "target_record_id": 47,
+      "expected_revenue": 110000.0,
+      "answer": "### Revenue Analysis: Festive Flash Sale - South\n\n*   **Record ID:** 47\n*   **Campaign Name:** Festive Flash Sale - South\n*   **Revenue:** 110,000\n\n**Business Insight:**\nThe \"Festive Flash Sale\" in the South region achieved the highest revenue among the provided data points (110,000). This performance, supported by a high transaction volume (2,380) and a strong average transaction value (6.30), indicates that the campaign was highly effective in driving both customer traffic and high-value conversions during the October 2026 period.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.018327200028579682,
+      "latency_seconds": 4.695603600004688,
+      "retrieved_chunk_ids": [
+        7,
+        13,
+        14,
+        6,
+        16
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "What was the Revenue for record 60 (New Year Eve - Central)?",
+      "target_record_id": 60,
+      "expected_revenue": 74000.0,
+      "answer": "### Revenue Analysis: Record 60\n\n**Revenue Data**\n*   **Campaign:** New Year Eve - Central\n*   **Record ID:** 60\n*   **Revenue:** 74,000\n\n**Business Insight**\nThe \"New Year Eve - Central\" campaign (Record 60) generated a revenue of 74,000. When compared to other entries for the same campaign (e.g., Record 100 at 79,000 and Record 80 at 76,500), this specific instance reflects a lower performance tier, suggesting potential variability in regional execution or consumer engagement levels for this campaign period.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.033627400000113994,
+      "latency_seconds": 2.461794800008647,
+      "retrieved_chunk_ids": [
+        16,
+        6,
+        10,
+        13,
+        2
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "What was the Revenue for record 74 (Navratri Offer - West)?",
+      "target_record_id": 74,
+      "expected_revenue": 90500.0,
+      "answer": "### Revenue Analysis: Navratri Offer - West (Record 74)\n\n**Revenue Data**\n*   **Record ID:** 74\n*   **Event:** Navratri Offer - West\n*   **Revenue:** 90,500\n\n**Business Insight**\nThe Navratri Offer in the West region (Record 74) demonstrates strong performance, generating the highest revenue among the entries provided for that specific event across the different records. This suggests that the promotional strategy or market conditions in the West during this period were highly effective in driving consumer spend.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.03459739999379963,
+      "latency_seconds": 2.394625300017651,
+      "retrieved_chunk_ids": [
+        12,
+        9,
+        2,
+        15,
+        5
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "What was the Revenue for record 85 (New Year Campaign - Central)?",
+      "target_record_id": 85,
+      "expected_revenue": 85000.0,
+      "answer": "### Revenue Analysis: Record 85\n\n*   **Campaign Name:** New Year Campaign - Central\n*   **Revenue:** 85,000\n\n**Business Insight:**\nThe \"New Year Campaign - Central\" (Record 85) demonstrates strong financial performance with a high revenue generation of 85,000. With an ROI of 5.10, this campaign effectively converts marketing spend into significant top-line growth, positioning it as a high-performing initiative within the Central region's annual marketing calendar.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.02975929999956861,
+      "latency_seconds": 2.956612200010568,
+      "retrieved_chunk_ids": [
+        0,
+        14,
+        10,
+        7,
+        16
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "What was the Revenue for record 92 (Independence Sale - South)?",
+      "target_record_id": 92,
+      "expected_revenue": 71000.0,
+      "answer": "Information not available in uploaded data.",
+      "retrieval_hit_at_5": 0,
+      "relevant_rank": null,
+      "reciprocal_rank": 0.0,
+      "answer_correct": 0,
+      "retrieval_time_seconds": 0.03804950002813712,
+      "latency_seconds": 1.4145523000042886,
+      "retrieved_chunk_ids": [
+        0,
+        2,
+        12,
+        13,
+        11
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "What was the Revenue for record 96 (Black Friday - North)?",
+      "target_record_id": 96,
+      "expected_revenue": 108000.0,
+      "answer": "### Revenue Analysis: Record 96\n\n*   **Campaign Name:** Black Friday - North\n*   **Revenue:** 108,000\n\n**Business Insight:**\nRecord 96 represents the highest revenue-generating event within the provided dataset. With a marketing spend of 21,500 and an ROI of 6.10, this campaign demonstrates strong efficiency in converting marketing investment into top-line growth, significantly outperforming other seasonal events such as the Year End Clearance or Summer Sale.",
+      "retrieval_hit_at_5": 0,
+      "relevant_rank": null,
+      "reciprocal_rank": 0.0,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.025741899968124926,
+      "latency_seconds": 2.2049597000004724,
+      "retrieved_chunk_ids": [
+        16,
+        6,
+        2,
+        12,
+        0
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "What was the Revenue for record 100 (New Year Eve - Central)?",
+      "target_record_id": 100,
+      "expected_revenue": 79000.0,
+      "answer": "### Revenue Analysis: Record 100\n\n*   **Campaign Name:** New Year Eve - Central\n*   **Revenue:** 79,000\n\n**Business Insight:**\nThe \"New Year Eve - Central\" campaign (Record 100) generated a revenue of 79,000 with a marketing spend of 17,000, resulting in an ROI of 4.90. This performance indicates a strong conversion efficiency for year-end promotional activities in the Central region, effectively leveraging high customer traffic (28,200) to drive top-line growth.",
+      "retrieval_hit_at_5": 1,
+      "relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "answer_correct": 1,
+      "retrieval_time_seconds": 0.032462900038808584,
+      "latency_seconds": 2.5131951000075787,
+      "retrieved_chunk_ids": [
+        16,
+        0,
+        13,
+        6,
+        2
+      ]
+    }
+  ]
+}

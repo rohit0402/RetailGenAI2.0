@@ -1,0 +1,289 @@
+{
+  "experiment": "Experiment 6 - Query Router + Deterministic Analytics",
+  "questions": 14,
+  "deterministic_handled": 13,
+  "gemini_calls": 1,
+  "deterministic_route_percentage": 0.9285714285714286,
+  "target_recall_at_5": 0.8571428571428571,
+  "all_targets_at_5": 1,
+  "mrr": 0.8571428571428571,
+  "answer_accuracy": 0.9285714285714286,
+  "average_latency": 0.1666020500082855,
+  "p50_latency": 0.0019786999910138547,
+  "p95_latency": 2.306798500008881,
+  "p99_latency": 2.306798500008881,
+  "results": [
+    {
+      "id": "v2_q01",
+      "category": "exact_lookup",
+      "question": "What was the Revenue for record 96 (Black Friday - North)?",
+      "route": "deterministic",
+      "router_type": "multi_condition",
+      "retrieved_ids": [
+        "96"
+      ],
+      "target_ids": [
+        "96"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.00291730000753887,
+      "answer": "Record 96 (Black Friday - North) belongs to the North region and generated Revenue of 108000."
+    },
+    {
+      "id": "v2_q02",
+      "category": "exact_lookup",
+      "question": "How much Revenue did record 47 generate?",
+      "route": "deterministic",
+      "router_type": "exact_lookup",
+      "retrieved_ids": [
+        "47"
+      ],
+      "target_ids": [
+        "47"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.0019672999915201217,
+      "answer": "Record 47 (Festive Flash Sale - South) belongs to the South region and generated Revenue of 110000."
+    },
+    {
+      "id": "v2_q03",
+      "category": "metadata_filter",
+      "question": "Which region was record 74 from, and what was its Revenue?",
+      "route": "deterministic",
+      "router_type": "multi_condition",
+      "retrieved_ids": [
+        "74"
+      ],
+      "target_ids": [
+        "74"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.0018540000019129366,
+      "answer": "Record 74 (Navratri Offer - West) belongs to the West region and generated Revenue of 90500."
+    },
+    {
+      "id": "v2_q04",
+      "category": "metadata_filter",
+      "question": "What was the Revenue of the Black Friday campaign in the North region for record 36?",
+      "route": "deterministic",
+      "router_type": "multi_condition",
+      "retrieved_ids": [
+        "36"
+      ],
+      "target_ids": [
+        "36"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": false,
+      "latency": 0.0018394000071566552,
+      "answer": "Record 36 (Black Friday - North) belongs to the North region and generated Revenue of 100500."
+    },
+    {
+      "id": "v2_q05",
+      "category": "semantic",
+      "question": "Which campaign record generated the highest Revenue in the dataset?",
+      "route": "deterministic",
+      "router_type": "analytics",
+      "retrieved_ids": [
+        "87"
+      ],
+      "target_ids": [
+        "87"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.00042180001037195325,
+      "answer": "Record 87 (Festive Flash Sale - South) generated the highest Revenue of 115000."
+    },
+    {
+      "id": "v2_q06",
+      "category": "semantic",
+      "question": "Which campaign had the strongest ROI among the records?",
+      "route": "deterministic",
+      "router_type": "analytics",
+      "retrieved_ids": [
+        "87"
+      ],
+      "target_ids": [
+        "87"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.0005709000106435269,
+      "answer": "Record 87 (Festive Flash Sale - South) had the strongest ROI of 6.4."
+    },
+    {
+      "id": "v2_q07",
+      "category": "multi_condition",
+      "question": "Which record had Revenue of 100500 and belonged to the North region?",
+      "route": "deterministic",
+      "router_type": "multi_condition",
+      "retrieved_ids": [
+        "36"
+      ],
+      "target_ids": [
+        "36"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.004294000013032928,
+      "answer": "Record 36 in the North region generated Revenue of 100500."
+    },
+    {
+      "id": "v2_q08",
+      "category": "multi_condition",
+      "question": "Which South region campaign generated 110000 Revenue?",
+      "route": "deterministic",
+      "router_type": "multi_condition",
+      "retrieved_ids": [
+        "47"
+      ],
+      "target_ids": [
+        "47"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.0023230999941006303,
+      "answer": "Record 47 in the South region generated Revenue of 110000."
+    },
+    {
+      "id": "v2_q09",
+      "category": "comparison",
+      "question": "Compare the Revenue of records 36 and 96.",
+      "route": "deterministic",
+      "router_type": "comparison",
+      "retrieved_ids": [
+        "36",
+        "96"
+      ],
+      "target_ids": [
+        "36",
+        "96"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.001990099990507588,
+      "answer": "Revenue comparison \u2014 record 36: 100500, record 96: 108000. Record 96 generated more Revenue."
+    },
+    {
+      "id": "v2_q10",
+      "category": "comparison",
+      "question": "Which generated more Revenue: record 60 or record 100?",
+      "route": "deterministic",
+      "router_type": "comparison",
+      "retrieved_ids": [
+        "60",
+        "100"
+      ],
+      "target_ids": [
+        "60",
+        "100"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.0020779000187758356,
+      "answer": "Revenue comparison \u2014 record 60: 74000, record 100: 79000. Record 100 generated more Revenue."
+    },
+    {
+      "id": "v2_q11",
+      "category": "aggregation",
+      "question": "What is the average Revenue of records 36 and 96?",
+      "route": "deterministic",
+      "router_type": "aggregation",
+      "retrieved_ids": [
+        "36",
+        "96"
+      ],
+      "target_ids": [
+        "36",
+        "96"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.0018261000222992152,
+      "answer": "The average Revenue of records 36, 96 is 104250."
+    },
+    {
+      "id": "v2_q12",
+      "category": "aggregation",
+      "question": "What is the total Revenue of records 47 and 74?",
+      "route": "deterministic",
+      "router_type": "aggregation",
+      "retrieved_ids": [
+        "47",
+        "74"
+      ],
+      "target_ids": [
+        "47",
+        "74"
+      ],
+      "target_recall": 1.0,
+      "all_targets_retrieved": true,
+      "mrr": 1.0,
+      "answer_accuracy": true,
+      "latency": 0.0012362000124994665,
+      "answer": "The total Revenue of records 47, 74 is 200500."
+    },
+    {
+      "id": "v2_q13",
+      "category": "unanswerable",
+      "question": "What was the Revenue of the Mumbai campaign?",
+      "route": "rag",
+      "router_type": "semantic",
+      "retrieved_ids": [
+        "62",
+        "2",
+        "22",
+        "42",
+        "82"
+      ],
+      "target_ids": [],
+      "target_recall": 0.0,
+      "all_targets_retrieved": true,
+      "mrr": 0.0,
+      "answer_accuracy": true,
+      "latency": 2.306798500008881,
+      "answer": "### Campaign Analysis Report\n\n**Revenue for Mumbai Campaign:**\nInformation not available in uploaded data.\n\n**Business Insight:**\nThe provided dataset exclusively contains records for the \"Diwali Mega Sale - South\" region. There is no performance data available for the Mumbai region to facilitate a comparative analysis or revenue assessment."
+    },
+    {
+      "id": "v2_q14",
+      "category": "unanswerable",
+      "question": "What was the Revenue of record 999?",
+      "route": "deterministic",
+      "router_type": "exact_lookup",
+      "retrieved_ids": [],
+      "target_ids": [],
+      "target_recall": 0.0,
+      "all_targets_retrieved": true,
+      "mrr": 0.0,
+      "answer_accuracy": true,
+      "latency": 0.002312100026756525,
+      "answer": "Information not available in uploaded data."
+    }
+  ]
+}

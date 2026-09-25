@@ -1,0 +1,206 @@
+[
+  {
+    "id": "q01",
+    "question": "What was the Revenue for record 1 (Summer Sale - North)?",
+    "expected_answer": "Record 1 had Revenue of $45,600.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      1
+    ],
+    "expected_values": [
+      "45,600"
+    ],
+    "retrieval_match_terms": [
+      "record_id 1",
+      "1",
+      "Summer Sale - North"
+    ]
+  },
+  {
+    "id": "q02",
+    "question": "What was the Revenue for record 8 (Weekend Special - East)?",
+    "expected_answer": "Record 8 had Revenue of $24,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      8
+    ],
+    "expected_values": [
+      "24,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 8",
+      "8",
+      "Weekend Special - East"
+    ]
+  },
+  {
+    "id": "q03",
+    "question": "What was the Revenue for record 16 (Black Friday - North)?",
+    "expected_answer": "Record 16 had Revenue of $98,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      16
+    ],
+    "expected_values": [
+      "98,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 16",
+      "16",
+      "Black Friday - North"
+    ]
+  },
+  {
+    "id": "q04",
+    "question": "What was the Revenue for record 22 (Diwali Mega Sale - South)?",
+    "expected_answer": "Record 22 had Revenue of $94,500.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      22
+    ],
+    "expected_values": [
+      "94,500"
+    ],
+    "retrieval_match_terms": [
+      "record_id 22",
+      "22",
+      "Diwali Mega Sale - South"
+    ]
+  },
+  {
+    "id": "q05",
+    "question": "What was the Revenue for record 36 (Black Friday - North)?",
+    "expected_answer": "Record 36 had Revenue of $100,500.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      36
+    ],
+    "expected_values": [
+      "100,500"
+    ],
+    "retrieval_match_terms": [
+      "record_id 36",
+      "36",
+      "Black Friday - North"
+    ]
+  },
+  {
+    "id": "q06",
+    "question": "What was the Revenue for record 47 (Festive Flash Sale - South)?",
+    "expected_answer": "Record 47 had Revenue of $110,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      47
+    ],
+    "expected_values": [
+      "110,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 47",
+      "47",
+      "Festive Flash Sale - South"
+    ]
+  },
+  {
+    "id": "q07",
+    "question": "What was the Revenue for record 60 (New Year Eve - Central)?",
+    "expected_answer": "Record 60 had Revenue of $74,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      60
+    ],
+    "expected_values": [
+      "74,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 60",
+      "60",
+      "New Year Eve - Central"
+    ]
+  },
+  {
+    "id": "q08",
+    "question": "What was the Revenue for record 74 (Navratri Offer - West)?",
+    "expected_answer": "Record 74 had Revenue of $90,500.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      74
+    ],
+    "expected_values": [
+      "90,500"
+    ],
+    "retrieval_match_terms": [
+      "record_id 74",
+      "74",
+      "Navratri Offer - West"
+    ]
+  },
+  {
+    "id": "q09",
+    "question": "What was the Revenue for record 85 (New Year Campaign - Central)?",
+    "expected_answer": "Record 85 had Revenue of $85,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      85
+    ],
+    "expected_values": [
+      "85,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 85",
+      "85",
+      "New Year Campaign - Central"
+    ]
+  },
+  {
+    "id": "q10",
+    "question": "What was the Revenue for record 92 (Independence Sale - South)?",
+    "expected_answer": "Record 92 had Revenue of $71,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      92
+    ],
+    "expected_values": [
+      "71,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 92",
+      "92",
+      "Independence Sale - South"
+    ]
+  },
+  {
+    "id": "q11",
+    "question": "What was the Revenue for record 96 (Black Friday - North)?",
+    "expected_answer": "Record 96 had Revenue of $108,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      96
+    ],
+    "expected_values": [
+      "108,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 96",
+      "96",
+      "Black Friday - North"
+    ]
+  },
+  {
+    "id": "q12",
+    "question": "What was the Revenue for record 100 (New Year Eve - Central)?",
+    "expected_answer": "Record 100 had Revenue of $79,000.",
+    "answer_type": "fact",
+    "relevant_record_ids": [
+      100
+    ],
+    "expected_values": [
+      "79,000"
+    ],
+    "retrieval_match_terms": [
+      "record_id 100",
+      "100",
+      "New Year Eve - Central"
+    ]
+  }
+]
